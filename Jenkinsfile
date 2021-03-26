@@ -9,9 +9,9 @@ pipeline {
         stage("Install Dependencies"){
             steps {
                 script {
-                    if (env.install_dependencies == 'true'){
+                    if (env.install_dependencies == 'true') {
                             sh "bash install-dependencies.sh"
-                        }
+                    }
                 }
             }
         }
