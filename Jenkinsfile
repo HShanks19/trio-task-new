@@ -18,7 +18,7 @@ pipeline {
         }
         stage("Docker Login") {
             steps {
-                sh "echo $DOCKER_PASSWORD | docker login --username $DOCKER_USERNAME --stdin-password"
+                sh "echo $DOCKER_PASSWORD | docker login --username $DOCKER_USERNAME --password-stdin"
             }
         }
         stage("Build"){
