@@ -2,8 +2,9 @@ pipeline {
     agent any
     environment {
         MYSQL_ROOT_PASSWORD = credentials("MYSQL_ROOT_PASSWORD")
+        DOCKER_USERNAME = "htrvolker"
         DOCKER_PASSWORD = credentials("DOCKER_PASSWORD")
-        install_dependencies = 'false'
+        install_dependencies = "false"
     }
     stages {
         stage("Install Dependencies"){
@@ -13,6 +14,11 @@ pipeline {
                             sh "bash install-dependencies.sh"
                     }
                 }
+            }
+        }
+        stage("Docker Login") {
+            steps {
+                sh "echo $DOCKER_PASSWORD | docker login --username $DOCKER_USERNAME --stdin-password"
             }
         }
         stage("Build"){
