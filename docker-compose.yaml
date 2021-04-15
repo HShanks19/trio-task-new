@@ -25,5 +25,5 @@ services:
       source: ./nginx/nginx.conf
       target: /etc/nginx/nginx.conf
 volumes:
-  trio-task-db:
+  db-volume:
 
